@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lista de Tareas PWA</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1976d2" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1 class="brand">Tareas</h1>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <form id="todo-form" autocomplete="off">
+        <input id="todo-input" class="input" type="text" placeholder="Escribe una tarea…" aria-label="Nueva tarea" required maxlength="120" />
+        <button class="btn primary" type="submit">Agregar</button>
+      </form>
+    </section>
+
+    <section class="card list" aria-live="polite">
+      <ul id="todo-list" class="todo-list"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Larari larala</p>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Registro del service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js');
+      });
+    }
+  </script>
+</body>
+</html>
